@@ -1,27 +1,3 @@
-
-#!/usr/bin/ruby
-###############################################################
-#
-# CSCI 305 - Ruby Programming Lab
-#
-# <firstname> <lastname>
-# <email-address>
-#
-###############################################################
-
-$bigrams = Hash.new # The Bigram data structure
-$name = "<firstname> <lastname>"
-
-# function to process each line of a file and extract the song titles
-def process_file(file_name)
-	puts "Processing File.... "
-
-	begin
-		IO.foreach(file_name) do |line|
-			# do something for each line
-		end
-
-		puts "Finished. Bigram model built.\n"
 	rescue
 		STDERR.puts "Could not open file"
 		exit 4
