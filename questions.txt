@@ -1,7 +1,7 @@
 Your name
 CSCI-305
 
-10.
+10. One of the problems I found is that certain words trigger looping phrases.  
 
 14.
 

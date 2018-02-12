@@ -59,7 +59,19 @@ def mcw(word)
   end
 end
 
-def create_title()
+def create_title(start)
+  title = [start]
+  current = start
+  while title.length < 20 do
+    next_word = mcw(current)
+    if next_word.nil?
+      break
+    end
+    current = next_word
+    title.push(current)
+  end
+  return title.join(" ")
+end
 
 # function to process each line of a file and extract the song titles
 def process_file(file_name)
@@ -114,6 +126,13 @@ def main_loop()
 	process_file(ARGV[0])
 
 	# Get user input
+  print ("Enter a word [Enter 'q' to quit]: ")
+  input = $stdin.gets.chomp
+  while input != "q" do
+    puts create_title(input)
+    print ("Enter a word [Enter 'q' to quit]: ")
+    input = $stdin.gets.chomp
+  end
 end
 
 if __FILE__==$0
