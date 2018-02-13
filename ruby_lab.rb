@@ -4,21 +4,28 @@
 #
 # CSCI 305 - Ruby Programming Lab
 #
-# <firstname> <lastname>
-# <email-address>
+# Jaret Boyer
+# jaret.c.boyer@gmail.com
 #
 ###############################################################
 
 $bigrams = Hash.new # The Bigram data structure
-$name = "<firstname> <lastname>"
+$name = "Jaret Boyer" # My Name
 
+# Takes a line from the input file and extracts the song title, then filtering out other patterns
 def cleanup_title(line)
+  # removes everything except whats after the last <SEP>
   title = line.gsub(/^.*<SEP>/, "")
+  # removes everything after and including the following symbols
   title.gsub!(/[\(\[\{\/\\\_\-\:\"\`\+\=\*].*/, "")
   title.gsub!(/feat\..*/, "")
+  # removes punctuation
   title.gsub!(/[\?\¿\!\¡\.\;\&\@\%\#\|]/, "")
-  title.gsub!(//, "")
+  # sets to lowercase
   title.downcase!()
+  # removes common stop words
+  title.gsub!(/a\b|an\b|and\b|by\b|for\b|from\b|in\b|of\b|on\b|or\b|out\b|the\b|to\b|with\b/, "")
+  # if title has non english characters, return nothing
   if title =~ /[^\w\s\']/
     return nil
   else
@@ -26,8 +33,10 @@ def cleanup_title(line)
   end
 end
 
+# builds the word bigram
 def build_bigrams(song_titles)
   song_titles.each do |title|
+    # splits titles into words and adds them to the nested hash
     words = title.split(" ")
     for i in 0..words.length-2
       if $bigrams[words[i]].nil?
@@ -46,9 +55,11 @@ end
 def mcw(word)
   count = 0
   follower = nil
+  # if there is no word occuring after
   if $bigrams[word].nil?
     return nil
   else
+    # check each occuring word to see which one occurs most
     $bigrams[word].each do |key, value|
       if value > count
         count = value
@@ -68,6 +79,9 @@ def create_title(start)
       break
     end
     current = next_word
+    if title.include?(current)
+      break
+    end
     title.push(current)
   end
   return title.join(" ")
@@ -76,6 +90,7 @@ end
 # function to process each line of a file and extract the song titles
 def process_file(file_name)
 	puts "Processing File.... "
+  # array to hold all song titles, used to build bigram
   song_titles = Array.new
 
 	begin
@@ -106,6 +121,7 @@ def process_file(file_name)
 		puts "Finished. Bigram model built.\n"
 
 	rescue => exception
+    # added exception stuff to debug code better
     puts exception
     puts exception.backtrace
 		STDERR.puts "Could not open file"
@@ -127,6 +143,7 @@ def main_loop()
 
 	# Get user input
   print ("Enter a word [Enter 'q' to quit]: ")
+  # had to change to $stdin becuase it was getting input from file
   input = $stdin.gets.chomp
   while input != "q" do
     puts create_title(input)

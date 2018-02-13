@@ -1,24 +1,28 @@
 Your name
 CSCI-305
 
-10. One of the problems I found is that certain words trigger looping phrases.  
+10. One of the problems I found is that certain words trigger looping phrases.  If one word eventually chains back to itself, then that loop is repeated until it maxes out.
 
-14.
+14. For some of the words in the bigram, the word that most often follows it is also the word which it most often follows, or somehow loops back to the initial word.  This causes repeating loops in the song titles.
 
-15.
+15. I tried a lot of words, but didn't find any that ended before the twenty word limit. The only ones that did were single word titles.  There probably are a few that do, but I couldn't find them, and the majority don't just because of how certain words will trigger a loop every time.
 
-16.
+16. When creating the song title, If a title already contained the next word to add, I coded the program to return the current title. Instead of infinitely looping until the max is reached, the song titles now end short of twenty in every case I have tried.  The only downside to this method is that a title can't contain a word more than once.  An alternative solution that I was thinking about, is every time a word is repeated, use the next most common word instead of the most common.
 
-19.
+17. montana
 
-20.
+18. bob mcgee me down road blues night long way you are
 
-21.
+19. My solution doesn't cause the titles to change, I get the same title every time for the same word.
 
-22.
+20. title theme song you are (yoda)
 
-23.
+21. Something I like about ruby is the variety of ways to do the same things.  For example, there are many different ways to do the same foreach loop on a set of data.
 
-24.
+22. I really dislike the end statements that are necessary for various things inside of ruby.  I just find that I'm so used to looking for braces to see where a block of code terminates, and the words end just get jumbled up with other code.
 
-25.
+23. I enjoyed this lab.  I appreciate how you left it kind of open ended which forced us to explore the language for ourselves.
+
+24. Atom actually crashed and ended up clearing my almost completed lab, so I had to redo the whole thing.  My second time through it only took me about an hour or two.
+
+25. If there was a task that I needed to complete, and ruby was the best tool, I would use ruby again.  I'm not too familiar with the powerful ruby libraries, but I'd use ruby if one of its libraries was better than other languages.
